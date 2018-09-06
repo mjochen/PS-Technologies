@@ -5,7 +5,7 @@
 * Save the creation of the PSDrive to your profilescript.
 * Close the PowerShell session and open a new session to check whether the PSDrive remains.
 * Get the folder where the profilescript is stored.
-* Remove that folder. (Unless you like the new PSDrive. In that case, leace the profilescript as it is.)
+* Remove that folder. (Unless you like the new PSDrive. In that case, leave the profilescript as it is.)
 
 [Solution](Solutions/Creating_PSDrives_1.ps1)
 
