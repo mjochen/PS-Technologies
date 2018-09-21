@@ -6,7 +6,7 @@ $Service = "WinRM" #Change service name with your service name
 
 $srv = Get-CimInstance -ClassName Win32_service  -Filter "Name = '$Service'"
 (Get-CimClass -ClassName Win32_service).CimClassMethods
-$StopStatus = Invoke-CimMethod -InputObject $srv -MethodName StopService -WhatIf
+$StopStatus = Invoke-CimMethod -InputObject $srv -MethodName StopService
 
 If ($StopStatus.ReturnValue -eq "0") # validating status - http://msdn.microsoft.com/en-us/library/aa393673(v=vs.85).aspx
 {
