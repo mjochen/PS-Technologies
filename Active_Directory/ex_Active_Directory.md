@@ -54,7 +54,44 @@ Show name, minimum nr of characters and applies-to for all FGPP’s in a table, 
 
 
 [Solution](Solutions/Fine_Grained_Password_Policies_1.ps1)
+
+## Different connections
+
+The use case for this exercises is that you have to manage two different domains, with different credentials. You are given a list of users that need their passwords reset (or, as in this case, their City-attribute set), and an indication of which domain they belong to.
+
+Use the following code to create the CSV that you are given:
+
+```PowerShell
+$csv = "c:\tmp\users.csv"
+
+#region Create CSV
+
+$acme = Get-ADOrganizationalUnit -Filter { Name -like "Acme" }
+
+$users = Get-ADUser -Filter { Name -like "A*" } -SearchBase $acme.DistinguishedName |
+    Select-Object DistinguishedName
+    
+$users | ForEach-Object { $_ | Add-Member -MemberType NoteProperty -Name "Server" -Value (Get-Random -Minimum 1 -Maximum 3 ) }
+    
+$users | Export-Csv $csv -Delimiter ";"
+
+#endregion
+```
+
+Now create two PSDrives (to the same domain), and make sure all users with server-attribute "1" in the CSV are moved to Madrid, and all users with attribute 2 are moved to Berlin.
+
+[Solution](Solutions/Different_connections.ps1)
+
+Felt bad about the copying of code as well? Rewrite using a function!
+
+[Solution](Solutions/Different_connections_function.ps1)
+
+But what if you weren't sure there were only 2 connections? What if there were 3, of 4, or maybe sometimes even 17? Could you make the entire program generic, where the server-name is stored in the CSV, and used to create (and, when no longer neccessary destroy) a connection to an AD?
+
+[Solution](Solutions/Different_connections_generic.ps1)
+
 ## _User properties
 
 Pager property
+
 ## _Enable recycle bin
