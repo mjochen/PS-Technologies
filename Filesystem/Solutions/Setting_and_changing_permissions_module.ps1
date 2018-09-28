@@ -1,5 +1,6 @@
 Install-Module -Name NTFSSecurity # sudo
 Get-Command -Module NTFSSecurity
+Get-Module -Name NTFSSecurity
 
 # Create with a cmdlet a new folder under the root of the C-drive called Testfolder.
 $f = "c:\testfolder"
@@ -9,10 +10,10 @@ New-Item -Path $f -ItemType Directory
 Get-NTFSAccess $f
 
 # Copy the contents of the temp-folder to this new location.
-Copy-Item -Path c:\tmp\* -Destination $folder -Recurse
+Copy-Item -Path c:\tmp\* -Destination $f -Recurse
 
 # Disable the inheritance on the new folder
-Disable-NTFSAccessInheritance $f
+Disable-NTFSAccessInheritance $f # -RemoveInheritedAccessRules
 
 # Give your own account full management-rights over this folder and his files, but not the subfolders.
 $user = $env:USERNAME
@@ -20,7 +21,7 @@ Add-NTFSAccess -Path $f -Account $user -AccessRights FullControl -AccessType All
 
 # Transfer the accesspermissions from this folder to the folder Tmp.
 md c:\temp
-Get-NTFSAccess -Path $f | add-ntfsaccess -Path c:\temp # sudo
+Get-NTFSAccess -Path $f | Add-NTFSAccess -Path c:\temp # sudo
 
 # Delete all non-inherited permissions on Tmp.
 Get-NTFSAccess -Path $f | Where-Object InheritedFrom -eq "" | Remove-NTFSAccess
