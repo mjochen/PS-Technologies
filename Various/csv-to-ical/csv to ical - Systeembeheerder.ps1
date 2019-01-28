@@ -1,4 +1,4 @@
-﻿$csvPath = 'C:\Tmp\Lessenrooster Systeembeheerder 2017-2018-Versie 2018-01-12.csv'
+﻿$csvPath = 'C:\scripts\Copy of Lessenrooster IT Security-beheerder 2018-11-29.csv'
 $outPath = 'c:\tmp\systeembeheerder ICS.ics'
 $csvData = Get-Content -Path $csvPath | Select-Object -Skip 1 | ConvertFrom-Csv -Delimiter ";"
 

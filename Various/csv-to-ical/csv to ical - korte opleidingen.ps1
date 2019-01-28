@@ -1,10 +1,12 @@
-﻿$csvPath = 'C:\Tmp\Korte opleidingen 2017-2018 Versie 1.csv'
+﻿$csvPath = 'C:\Tmp\Korte opleidingen 2018-2019 Versie 4.csv'
 # $outPath = 'c:\tmp\systeembeheerder ICS.ics'
 $csvData = Get-Content -Path $csvPath | Select-Object -Skip 2 | ConvertFrom-Csv -Delimiter ";"
 
 $Groepen = $csvData | Group-Object Docent | Where-Object Name -like "?*"
 
 $Groepen[1].Group
+
+$groepen = $Groepen | Where-Object Name -eq "JM"
 
 foreach($groep in $Groepen)
 {
