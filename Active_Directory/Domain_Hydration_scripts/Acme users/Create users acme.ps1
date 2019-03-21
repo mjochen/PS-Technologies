@@ -1,4 +1,3 @@
-
 $domein=(Get-ADDomain).DistinguishedName
 
 New-ADOrganizationalUnit -name "Acme" -path "$domein"

@@ -1,4 +1,4 @@
-﻿$uri = "https://playground.radio1.be/c1000/2018/"
+﻿$uri = "https://playground.radio1.be/c1000/2017/"
  
 $ie = New-Object -comobject InternetExplorer.Application
 $ie.Visible = $true
