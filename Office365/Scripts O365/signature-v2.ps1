@@ -1,0 +1,2 @@
+﻿Get-Mailbox | foreach-object { `
+    Add-Content -Value ("<html><body>" + $_.DisplayName + "</body></html>") `     -Path "c:\tmp\$($_.DisplayName).htm" }Get-Mailbox |     foreach-object { `        Set-MailboxMessageConfiguration `            -Identity $_.Identity `            -Signature (Get-Content "c:\tmp\$($_.DisplayName).htm" ) `            -AutoAddSignature $true }            Get-Mailbox | Get-Member
