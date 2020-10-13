@@ -1,0 +1,51 @@
+Describe ‘LoopBack’ {
+
+    ##  tests LoopBack adapter
+    It ‘Loopback should be available’ {
+        Test-Connection -ComputerName 127.0.0.1 -Quiet -Count 1 |
+        Should Be $true
+    }
+
+}
+
+Describe ‘LocalNic’ {
+
+    ##  tests local adapter
+    It ‘Local adapter should be available’ {
+        Test-Connection -ComputerName $netinfo.IPAddress -Quiet -Count 1 |
+        Should Be $true
+    }
+
+}
+
+Describe ‘DefaultGateway’ {
+
+##  tests Default Gateway
+    It ‘Default Gateway should be available’ {
+        Test-Connection -ComputerName $netinfo.DefaultGateway -Quiet -Count 1 |
+        Should Be $true
+
+    }
+
+}
+
+Describe ‘DNSServer’ {
+    ##  tests DNS server
+    It ‘DNS server should be available’ {
+        Test-Connection -ComputerName $netinfo.DNSserver -Quiet -Count 1 |
+        Should Be $true
+
+    }
+
+}
+
+Describe ‘Target’ {
+
+##  tests target server
+    It ‘Target server should be available’ {
+        Test-Connection -ComputerName MyNoneExistantServer -Quiet -Count 1 |
+        Should Be $true
+
+    }
+
+}
