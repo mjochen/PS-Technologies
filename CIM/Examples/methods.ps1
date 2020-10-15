@@ -18,7 +18,7 @@ Invoke-CimMethod -InputObject $x -MethodName GetOwner
 # in the end, you get the same functionality, but CIM 'hides' the methods
 # You should still use CIM though, since WMI is considered deprecated
 
-# by the way, notice "Reboot()"
+# by the way, notice "Reboot()"...
 $pc = Get-WmiObject -Namespace "root\cimv2" -ComputerName "." -classname Win32_OperatingSystem
 $pc | Get-Member -MemberType Methods
 
