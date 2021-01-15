@@ -11,6 +11,6 @@ $imgURL = ($site.Images | Where-Object Width -eq 900).src
 
 $imgFile = Join-Path $destination ($date + ".jpg")
 
-Start-BitsTransfer -Source $imgURL -Destination $imgFile
+Invoke-WebRequest -URI $imgURL -OutFile $imgFile
 
 $site | Get-Member

@@ -1,0 +1,1 @@
+Get-ScheduledTask | Group-Object state

@@ -1,23 +1,20 @@
-﻿$url = "https://garfield.com/comic/2013/01/02"
-# $baseurl = "https://d1ejxu6vysztl5.cloudfront.net/comics/garfield/2013/2013-01-02.gif"
-
-$baseurl = "https://d1ejxu6vysztl5.cloudfront.net/comics/garfield/"
-# /2017/2017-10-19
-$extension = ".gif"
-
-$destination = "c:\tmp\Garfield"
-md $destination
+﻿$baseuri = "https://www.gocomics.com/garfield/"
+$location = "c:\tmp\Garfield"
 
 $date = (Get-Date).AddDays(-15)
 
 do
 {
-    $url = $baseurl + $date.ToString("yyyy/yyyy-MM-dd") + $extension
-    $dest = Join-Path $destination ($date.ToString("yyyy-MM-dd") + $extension)
+    $date
 
-    Start-BitsTransfer -Source $url -Destination $dest
+    $uri = $baseuri + $date.ToString("yyyy/MM/dd")
+
+    $webpage = Invoke-WebRequest -Uri $uri
+    $uri = ($webpage.Images | Where-Object alt -like "Garfield Comic Strip for*").src
+
+    $filename = Join-Path $location ("Garfield " + $date.ToString("yyyy-MM-dd") + ".gif")
+    Invoke-WebRequest -Uri $uri -OutFile $filename
 
     $date = $date.AddDays(1)
 }
-while(((Get-Date)-$date)-gt 0)
-
+while(((Get-Date)-$date)-gt 0) 
