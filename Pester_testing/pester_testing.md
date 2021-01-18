@@ -20,7 +20,7 @@ h2 {
 
 </style>
 
-![bg right 85%](2020-03-05-13-57-55.png)
+![bg right 85%](images/2020-03-05-13-57-55.png)
 
 ## Windows PowerShell
 # Pester testing
@@ -160,3 +160,12 @@ WARNING: Ping to 1.0.128.125 failed with status: TimedOut
     19:         $ping.PingSucceeded | Should -Be True
 ```
 This test would quickly give an overview of what is wrong with a certain computer. A replacement for the "Let's check the basics before moving on" that we always do when a server is acting up.
+
+---
+# Keep on reading
+
+There's a hey scripting guy-blog about Pester:
+
+[Blog](https://devblogs.microsoft.com/scripting/what-is-pester-and-why-should-i-care/)
+
+It will teach you all you need to know to get started, and there's the PowerShell help-pages for what follows...
