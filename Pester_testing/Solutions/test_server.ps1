@@ -19,7 +19,7 @@ Get-Volume | Where-Object DriveLetter -Like "?" | Select-Object -ExpandProperty 
 # No processes that have used more than 5 minutes of CPU
 
 $procs = Get-Process | Where-Object CPU -gt (60*5)
-$procs.length | Should Be 0
+$procs.length
 
 # Are not using 8.8.8.8 as DNS-server
 
