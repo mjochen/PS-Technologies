@@ -11,6 +11,11 @@ You shouldn’t automate tasks that you only do very occasionally. But just in c
 
 
 [Solution](Solutions/Installing_a_domain_1.ps1)
+
+... or install DHCP and DNS first, then install the domain!
+
+[Solution](Solutions/Installing_a_domain_2.ps1)
+
 ## Creating an OU, users and copying users
 * Create an OU with your name under “Acme”
 * Create ten users, called “your first name 1..10”

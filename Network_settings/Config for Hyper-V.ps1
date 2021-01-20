@@ -44,7 +44,6 @@ Get-NetAdapter -Name *10.0.0.0* | Remove-NetRoute -Confirm:$False
 #region test
 
 Ping 10.0.0.4 # no, windows firewall
-Test-NetConnection -ComputerName 10.0.0.2 -CommonTCPPort WINRM
+Test-NetConnection -ComputerName 10.0.0.2 -CommonTCPPort WINRM # no, also firewall
 
 #endregion
-
