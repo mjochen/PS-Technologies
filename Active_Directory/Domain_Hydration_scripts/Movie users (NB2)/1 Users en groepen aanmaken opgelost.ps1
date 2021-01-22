@@ -1,4 +1,15 @@
-﻿#region functies
+﻿#region remoting
+
+$credDom = Get-Credential local.cursusdom.tm\Administrator
+$s = New-PSSession -ComputerName "172.20.0.2" -Credential $credDom
+
+Invoke-Command -Session $s -ScriptBlock { md c:\scripts }
+Copy-Item -Path "C:\...\Movie users (NB2)\Gebruikers.csv" -Destination "c:\Scripts\Gebruikers.csv" -ToSession $s
+
+Enter-PSSession $s
+#endregion
+
+#region functies
 function Get-UniekeLogin ($SAM)
 {
     if(Get-ADUser -Filter { SAMAccountName -eq $SAM } )
