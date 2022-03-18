@@ -1,4 +1,4 @@
-﻿Get-ScheduledJob "create backup" | Unregister-ScheduledJob
+﻿Get-ScheduledJob "say animalfact" | Unregister-ScheduledJob
 
 $jt = New-JobTrigger -Once -At (get-date).Date -RepetitionInterval (New-TimeSpan -Minutes 3) -RandomDelay 00:02:00 -RepetitionDuration ([TimeSpan]::MaxValue)
 $opt = New-ScheduledJobOption -StartIfOnBattery
