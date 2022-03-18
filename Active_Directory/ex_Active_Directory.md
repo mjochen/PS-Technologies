@@ -99,4 +99,8 @@ But what if you weren't sure there were only 2 connections? What if there were 3
 
 Pager property
 
-## _Enable recycle bin
+## Random passwords
+
+There are API's on the internet that can generate you a random password. Generate a new password and create a credential with it.
+
+[Solution](Solutions/Random_password_api.ps1)
