@@ -1,6 +1,17 @@
-$url = "https://makemeapassword.ligos.net/api/v1/passphrase/json?pc=1&wc=6"
+function replace-multipleCharacters
+{
+    param([string] $word )
 
-$newpassword = (ConvertFrom-Json (Invoke-WebRequest -Uri $url)).pws[0]
+    $special = "ŠŽšžŸÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðñòóôõöùúûüýÿ"
+    $normal  = "SZszYAAAAAACEEEEIIIIDNOOOOOUUUUYaaaaaaceeeeiiiidnooooouuuuyy"
 
-$securestring = ConvertTo-SecureString -String $newpassword -AsPlainText -Force
-$cred = New-Object -TypeName System.Management.Automation.PSCredential("admin" ,$securestring)
+    for($i=0;$i -lt $special.Length; $i++)
+    {
+        $word = $word -creplace $special[$i], $normal[$i]
+
+    }
+
+    return $word
+}
+
+replace-multipleCharacters -word "Mariën"
