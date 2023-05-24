@@ -24,8 +24,7 @@ $Button.Location = New-Object System.Drawing.Point(100, 60)
 $Button.Size = New-Object System.Drawing.Size(100, 30)
 $Button.Text = "Search"
 $Button.Add_Click({
-    $username = $TextBox.Text
-    $user = Get-LocalUser -Name $username
+    $user = Get-LocalUser -Name $TextBox.Text
     if ($user) {
         $TextBox.ForeColor = "Green"
     } else {
